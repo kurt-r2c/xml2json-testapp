@@ -15,16 +15,19 @@ const defaultXml = '<root><name>John</name><age>25</age></root>';
 // Render the web form
 app.get('/', (req, res) => {
   res.send(`
-    <form action="/" method="POST">
+  <html>
+    <form action="/render" method="POST">
       <textarea name="xmlData" rows="10" cols="50">${defaultXml}</textarea>
       <br>
       <button type="submit">Convert to JSON</button>
     </form>
+    </html>
+
   `);
 });
 
 // Handle form submission and XML to JSON conversion
-app.post('/', (req, res) => {
+app.post('/render', (req, res) => {
   const { xmlData } = req.body;
 
   // Convert XML to JSON
